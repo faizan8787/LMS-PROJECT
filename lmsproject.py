@@ -1,0 +1,28 @@
+import tkinter
+import customtkinter
+from customtkinter import *
+from PIL import Image
+root=customtkinter.CTk()
+root.geometry('300x400')
+root._set_appearance_mode("dark")
+img=customtkinter.CTkImage(dark_image=Image.open("lms4.jpg"),size=(1600,800))
+img1=customtkinter.CTkImage(dark_image=Image.open("lm3.jpg"),size=(300,300))
+lab=customtkinter.CTkLabel(root, image=img,text="")
+lab1=customtkinter.CTkLabel(root, image=img1,text="")
+lab.grid(row=0,column=0)
+lab1.place(x=20,y=20)
+title_label=customtkinter.CTkLabel(master=root, width=150, height=70, text='Library Management System', font=('default', 50),bg_color="grey")
+title_label.place(x=500,y=10)
+login_label= customtkinter.CTkLabel(master=root, width=120, height=50, text='Login Here', font=('default', 30),bg_color="grey")
+login_label.place(x=710,y=90)
+user_name_label= customtkinter.CTkLabel(master=root, width=80, height=30, text='User Name', font=('default', 20),bg_color="grey")
+user_name_label.place(x=500,y=150)
+entry = customtkinter.CTkEntry(master=root, height=50, width=500, font=('default', 30))
+entry.place(x=500,y=190)
+password_label= customtkinter.CTkLabel(master=root, width=80, height=30, text='Password', font=('default', 20),bg_color="grey")
+password_label.place(x=500,y=250)
+password_entry = customtkinter.CTkEntry(master=root, height=50, width=500, font=('default', 30))
+password_entry.place(x=500,y=290)
+login_button=customtkinter.CTkButton(master=root, text="Login")
+login_button.place(x=500, y=355)
+root.mainloop()
