@@ -20,6 +20,7 @@ def get_credentials(user_name,password):
                                              font=('default', 20,),
                                              bg_color="grey", fg_color="red")
         sucess_label.place(x=600, y=400)
+        print("Yes")
         process(user_name)
     else:
         error_label = customtkinter.CTkLabel(master=None, width=80, height=30, text='Incorrect User Name or Password', font=('default', 20,),
@@ -52,13 +53,33 @@ login_button.place(x=500, y=355)
 # print(user_name_entry.get())
 
 
-
 frame=pandas.read_excel('Bookshop.xlsx')
 # sheet = wb['Edition']
 id=list(frame['BookID'])
 title=list(frame['Title'])
 stock=list(frame['Stock'])
 print(title)
+def issue_book():
+    print("Enter Book Name ")
+    book=input()
+    if book in title:
+        x=title.index(book)
+        if stock[x]>0:
+            print("You have successfully issued the book")
+            stock[x]-=1
+        else:
+            print("Sorry, Book out of stock")
+    else:
+        print("Oops! Book not found")
+def return_book():
+    print("Enter Book Name ")
+    book=input()
+    if book in title:
+        x=title.index(book)
+        print("You have successfully returned the book")
+        stock[x]+=1
+    else:
+        print("Book not found")
 def process(user):
     global wb,sheet
     print("Welcome ",user)
@@ -70,14 +91,15 @@ def process(user):
     print("Press 1 to Get a book")
     print("Press 2 to return a book")
     x=input()
-    if x==0:
+    if x=='0':
         if user=="admin":
             pass
         else:
             print("Only admins can add books")
-    elif x==1:
-        pass
-    elif x==2:
-        pass
-
+    elif x=='1':
+        issue_book()
+    elif x=='2':
+        return_book()
 root.mainloop()
+
+
