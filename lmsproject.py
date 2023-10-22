@@ -70,7 +70,7 @@ def issue_book():
         else:
             print("Sorry, Book out of stock")
     else:
-        print("Oops! Book not found")
+        print("Oops!  Book not found")
 def return_book():
     print("Enter Book Name ")
     book=input()
